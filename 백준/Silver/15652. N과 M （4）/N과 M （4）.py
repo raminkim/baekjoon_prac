@@ -16,4 +16,5 @@ def dfs(num):
 
 if __name__ == "__main__":
     n, m = map(int, sys.stdin.readline().split())
+    # 무조건 1부터 시작하므로 1을 start 인수로 넣음.
     dfs(1)
