@@ -12,7 +12,7 @@ def backtracking(d):
     for i in range(n):
         if numbers[i] in lst: continue;
         lst.append(numbers[i])
-        dfs(d+1)
+        backtracking(d+1)
         lst.pop()
 
 if __name__ == "__main__":
