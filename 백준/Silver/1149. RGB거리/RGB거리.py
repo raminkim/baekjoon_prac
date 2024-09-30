@@ -10,8 +10,8 @@ if __name__ == '__main__':
     dp[0] = lst[0] # dp의 첫 줄을 맨 처음 집으로 세팅
 
     for i in range(n):
-        dp[i][0] = min(dp[i-1][1], dp[i-1][2]) + lst[i][0] # 이전 집의 최솟값 + dp[i][0]
-        dp[i][1] = min(dp[i-1][0], dp[i-1][2]) + lst[i][1] # 이전 집의 최솟값 + dp[i][1]
-        dp[i][2] = min(dp[i-1][0], dp[i-1][1]) + lst[i][2] # 이전 집의 최솟값 + dp[i][2]
+        dp[i][0] = min(dp[i-1][1], dp[i-1][2]) + lst[i][0] # 이전 집의 최솟값 + lst[i][0]
+        dp[i][1] = min(dp[i-1][0], dp[i-1][2]) + lst[i][1] # 이전 집의 최솟값 + lst[i][1]
+        dp[i][2] = min(dp[i-1][0], dp[i-1][1]) + lst[i][2] # 이전 집의 최솟값 + lst[i][2]
 
     print(min(dp[n-1])) # 결과 출력
