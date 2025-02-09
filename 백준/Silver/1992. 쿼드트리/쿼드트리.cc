@@ -23,8 +23,8 @@ void func(int x, int y, int n) {
 
         cout << "(";
         func(x, y, tmp); // 2사분면
-        func(x, y+tmp, tmp); // 3사분면
-        func(x+tmp, y, tmp); // 1사분면
+        func(x, y+tmp, tmp); // 1사분면
+        func(x+tmp, y, tmp); // 3사분면
         func(x+tmp, y+tmp, tmp); // 4사분면
         cout << ")";
     }
