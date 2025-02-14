@@ -6,50 +6,24 @@ using namespace std;
 
 int ans = 0;
 
-int func(string two, string three) {
-    int cnt = 0;
-    ans++;
-
-    if (two == string("c="))
-        cnt++;
-    else if (two == string("c-"))
-        cnt++;
-    else if (two == string("d-"))
-        cnt++;
-    else if (two == string("lj"))
-        cnt++;
-    else if (two == string("nj"))
-        cnt++;
-    else if (two == string("s="))
-        cnt++;
-    else if (two == string("z="))
-        cnt++;
-    
-    if (three == string("dz="))
-        cnt+=2;
-    
-    if (cnt)
-        return cnt;
-    
-    return 0;
-}
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+
+    vector<string> alphabet = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
     
     string s;
     cin >> s;
 
-    int i;
-
-    for (i = 0; i < s.size(); i++) {
-        string two = s.substr(i, 2);
-        string three = s.substr(i, 3);
-        i = i + func(two, three);
+    for (int i = 0; i < 8; i++) {
+        while(1) {
+            if (s.find(alphabet[i]) == -1)
+                break;
+            s.replace(s.find(alphabet[i]), alphabet[i].size(), "#");
+        }
     }
 
-    cout << ans;
+    cout << s.size();
     return 0;
 }
