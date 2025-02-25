@@ -13,10 +13,9 @@ bool visited[10001] = {false};
 
 void dfs(int v) {
     // 해킹할 수 있는 최대 컴퓨터 수를 갱신
-    
     visited[v] = true;
     count++;
-    // cout << v << " " << count << endl;
+    
     for (int i: vec[v]) {
         if (!visited[i]) {
             dfs(i);
@@ -40,9 +39,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         count = 0;
         fill(visited, visited + 10001, false);
-        // cout << "====" << endl;
         dfs(i);
-        // cout << i << " " << count << endl;
 
         if (count > peak) {
             peak = count;
