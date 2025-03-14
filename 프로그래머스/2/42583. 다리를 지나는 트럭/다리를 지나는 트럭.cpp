@@ -13,19 +13,20 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
     
     while (!q.empty() || idx < n) {
         ++t;
-        // 트럭이 다리를 지나갔다면
+        // 트럭이 다리를 지나갔다면?
         if (!q.empty() && q.front().second == bridge_length) {
             cur_weight -= q.front().first;
             q.pop();
         }
         
-        // 트럭을 다리 위에 올릴 수 있을 때
+        // 트럭을 다리 위에 올릴 수 있다면?
         if (idx < n && cur_weight + truck_weights[idx] <= weight) {
             q.push(make_pair(truck_weights[idx], 0));
             cur_weight += truck_weights[idx];
             idx++;
         }
         
+        // 다리 위의 차들 시간 +1씩 증가시키기.
         for (int i = 0; i < static_cast<int>(q.size()); i++) {
             pair<int, int> p = q.front();
             q.pop();
