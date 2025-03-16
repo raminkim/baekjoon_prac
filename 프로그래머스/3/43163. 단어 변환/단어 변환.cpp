@@ -36,8 +36,6 @@ int solution(string begin, string target, vector<string> words) {
         int d = get<1>(t);
         int idx = get<2>(t);
         
-        cout << s << " " << d << endl;
-        
         if (s == target) { answer = min(answer, d); continue; }
         
         
