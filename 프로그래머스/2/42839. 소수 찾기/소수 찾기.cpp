@@ -8,25 +8,21 @@
 using namespace std;
 
 int number[MAX];
-bool visited[MAX] = {false, };
+bool visited[10] = {false, };
 
 int ans = 0, n;
 string str;
 
 
-void func(string s, int idx, int dep) {
-    
+void func(string s, string s2) {
     // 소수라면, 해당 index의 값을 0으로 만들고 ans를 1 증가시킨다.
-    if (number[stoi(s)] != 0) {  number[stoi(s)] = 0; ans++; }
-    // 이미 n개의 char로 숫자를 만들었다면, return한다.
-    if (dep == n) { return; }
+    if (s2 != "" && number[stoi(s2)] != 0) { number[stoi(s2)] = 0; ans++; }
     
-    visited[idx] = true;
     for (int i = 0; i < n; i++) {
-        if (visited[i]) 
+        if (visited[i])
             continue;
-        
-        func(s + to_string(str[i]-48), i, dep+1);
+        visited[i] = true;
+        func(s, s2 + to_string(str[i]-48));
         visited[i] = false;
     }
 }
@@ -57,13 +53,7 @@ int solution(string numbers) {
     n = numbers.length();
     str = numbers;
     
-    for (int i = 0; i < n; i++) {
-        // 재귀를 돌기 전에 visited를 false로 모두 초기화
-        fill(visited, visited + MAX, false);
-        
-        // to_string으로 변환할 경우, ascii값으로 들어가므로 -48로 처리해주었음.
-        func(to_string(str[i]-48), i, 1);
-    }
+    func(numbers, "");
     
     return ans;
 }
