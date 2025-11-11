@@ -2,31 +2,25 @@
 
 using namespace std;
 
-vector<string> arr = {"aya", "ye", "woo", "ma"};
-
 int solution(vector<string> babbling) {
     int answer = 0;
     
     for (string s : babbling) {
-        int idx = 0;
-        bool isContain = false;
+        size_t idx = 0;
         
-        do {
-            isContain = false;
-            
-            for (string p : arr) {
-                if (s.find(p) == idx) {
-                    isContain = true;
-                    idx += p.size();
-                    break;
-                }
-            }
+        idx = s.find("aya");
+        if (idx != string::npos) { s.replace(idx, 3, " "); }
         
-        } while (isContain);
+        idx = s.find("ye");
+        if (idx != string::npos) { s.replace(idx, 2, " "); }
         
-        if (idx == s.size()) {
-            answer++;
-        }
+        idx = s.find("woo");
+        if (idx != string::npos) { s.replace(idx, 3, " "); }
+        
+        idx = s.find("ma");
+        if (idx != string::npos) { s.replace(idx, 2, " "); }
+        
+        answer += s.find_first_not_of(" ") == string::npos;
     }
     
     return answer;
