@@ -14,8 +14,6 @@ int main() {
     cin >> n >> k;
 
     vector<long> arr;
-    vector<long> money(11, 0);
-    vector<int> cnt(11, 0);
 
     for (int i = 0; i < n; i++) {
         int num;
@@ -23,21 +21,14 @@ int main() {
         arr.push_back(num);
     }
 
+    int cnt = 0;
+
     for (int i = n-1; i >= 0; i--) {
         if (arr[i] <= k) {
-            int c = k / arr[i];
-            int m = arr[i] * c;
-
-            cnt[i] = cnt[i+1] + c;
-            money[i] = money[i+1] + m;
-            k -= m;
-
-            continue;
+            cnt += k / arr[i];
+            k %= arr[i];
         }
-
-        cnt[i] = cnt[i+1];
-        money[i] = money[i+1];
     }
 
-    cout << cnt[0] << endl;
+    cout << cnt << endl;
 }
